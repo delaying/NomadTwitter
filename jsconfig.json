@@ -1,8 +1,0 @@
-{
-    "compilerOptions": {
-        "baseUrl" : "src"
-    },
-    "include":["src"]
-}
-
-// import 할 때 ../ 이런식으로 url 찍는것을 하지않기 위한 방법

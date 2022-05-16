@@ -1,6 +1,7 @@
 import React, {useState} from "react";
 import AppRouter from "./Router";
 import {authService} from "../myfirebase";
+import Auth from "../routes/Auth";
 
 function App() {
   console.log(authService.currentUser);
@@ -9,6 +10,7 @@ function App() {
 
   return (
     <>
+      <Auth/>
       <AppRouter isLoggedIn={isLoggedIn}/>
       <footer>nomad twitter</footer>
     </>
