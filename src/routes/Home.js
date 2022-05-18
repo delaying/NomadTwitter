@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { dbService } from "../myfirebase";
 
 
@@ -7,8 +7,18 @@ function Home(){
     const [nweets, setNweets] = useState([]);
     const getNweets = async () => {
         const dbNweets = await dbService.collection("nweets").get();
-        console.log(dbNweets);
+        dbNweets.forEach((document)=> {
+            const nweetObject = {
+                ...document.data(),
+                id:document.id,
+            };
+            setNweets((prev)=> [document.data(), ...prev]);
+        });
     };
+    useEffect(()=>{
+        getNweets();
+    },[]);
+
     const onSubmit = async(event) => {
         event.preventDefault();
         await dbService.collection("nweets").add({

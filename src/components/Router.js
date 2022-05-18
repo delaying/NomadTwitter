@@ -13,12 +13,13 @@ function AppRouter({isLoggedIn}){
             <Switch>
                 {isLoggedIn ? ( 
                 <>
+                    <Route exact path="/profile">
+                        <Profile userObj={userObj}/>
+                    </Route>
                     <Route exact path="/">
                         <Home/>
                     </Route>
-                    <Route exact path="/profile">
-                        <Profile/>
-                    </Route>
+                    
                 </>)
              : (<Route exact path="/"><Auth/></Route>)} 
             </Switch>
